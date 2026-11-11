@@ -1,0 +1,1202 @@
+/* =========================================================
+   One Last Trip — Official Student Registration App
+   Department of Computer Science • MES College Chathamangalam
+   ========================================================= */
+
+:root {
+    --primary-red: #B71C1C;
+    --primary-red-hover: #9A1414;
+    --primary-red-light: #FFEBEE;
+    --primary-red-soft: rgba(183, 28, 28, 0.08);
+    --dark-navy: #1A202C;
+    --text-body: #4A5568;
+    --text-muted: #718096;
+    --bg-page: #F7FAFC;
+    --bg-white: #FFFFFF;
+    --border-color: #E2E8F0;
+    --border-focus: #B71C1C;
+    --success-green: #2E7D32;
+    --success-bg: #E8F5E9;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--dark-navy);
+    line-height: 1.5;
+    padding-bottom: 74px; /* Space for sticky bar */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   Header with Official MES Logo
+   ========================================================= */
+.app-header {
+    background-color: var(--bg-white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1.5px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.college-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mes-logo-img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
+
+.college-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.college-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+.college-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* =========================================================
+   Hero Section with Desert Activities Background
+   ========================================================= */
+.app-main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.hero-bg-banner {
+    position: relative;
+    background: linear-gradient(135deg, #7F0000 0%, #B71C1C 55%, #D32F2F 100%);
+    padding: 32px 20px 65px;
+    color: var(--bg-white);
+    overflow: hidden;
+}
+
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.22;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 90% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+                      radial-gradient(circle at 10% 85%, rgba(0, 0, 0, 0.35) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+.tour-title-wrap {
+    text-align: center;
+}
+
+.trip-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+}
+
+.trip-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.trip-tagline {
+    font-size: 13px;
+    opacity: 0.92;
+    max-width: 380px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   Floating Trip Summary Card
+   ========================================================= */
+.summary-card-wrapper {
+    padding: 0 16px;
+    margin-top: -45px;
+    position: relative;
+    z-index: 10;
+}
+
+.trip-summary-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.summary-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.summary-badge {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary-red);
+    letter-spacing: 0.5px;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--success-bg);
+    color: var(--success-green);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--success-green);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.route-timeline-box {
+    background: var(--bg-page);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.route-station {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.station-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.origin-dot {
+    background: var(--primary-red);
+    box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.2);
+}
+
+.dest-dot {
+    background: var(--success-green);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+.station-info label {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.station-info h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark-navy);
+}
+
+.station-info span {
+    font-size: 12px;
+    color: var(--text-body);
+}
+
+.route-connector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0 6px 5px;
+}
+
+.connector-line {
+    width: 2px;
+    height: 20px;
+    background: var(--border-color);
+}
+
+.route-badge-icon {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.quick-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.stat-box {
+    background: var(--bg-page);
+    padding: 10px 8px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-icon {
+    font-size: 18px;
+}
+
+.stat-details label {
+    display: block;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.stat-details strong {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dark-navy);
+}
+
+.btn-primary-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-red);
+    color: var(--bg-white);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 14px rgba(183, 28, 28, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-primary-action:active {
+    background: var(--primary-red-hover);
+    transform: scale(0.98);
+}
+
+/* =========================================================
+   Destinations Section with Informative URLs
+   ========================================================= */
+.section-container {
+    padding: 22px 16px;
+}
+
+.section-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.section-heading-row h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--dark-navy);
+}
+
+.section-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.place-count-badge {
+    background: var(--primary-red-soft);
+    color: var(--primary-red);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+}
+
+.destinations-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dest-card {
+    background: var(--bg-white);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+
+.dest-card-media-link {
+    display: block;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dest-card-media-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.dest-card:hover .dest-card-media-link img {
+    transform: scale(1.05);
+}
+
+.dest-number-pill {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.72);
+    color: var(--bg-white);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.dest-tap-pill {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--primary-red);
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.dest-card-media-link:hover .dest-tap-pill {
+    background: var(--primary-red);
+    color: var(--bg-white);
+    transform: translateY(-2px);
+}
+
+.dest-card-body {
+    padding: 16px;
+}
+
+.dest-title-row h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    margin-bottom: 6px;
+}
+
+.dest-desc {
+    font-size: 12.5px;
+    color: var(--text-body);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.dest-highlights-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dest-highlights-tags span {
+    background: var(--bg-page);
+    color: var(--dark-navy);
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-color);
+}
+
+/* =========================================================
+   Student Registration Form (Clean Mobile Card)
+   ========================================================= */
+.form-container-card {
+    background: var(--bg-white);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.form-card-top-bar {
+    background: var(--bg-page);
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid var(--border-color);
+}
+
+.form-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-mes-icon {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+}
+
+.form-badge-group h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    line-height: 1.2;
+}
+
+.form-badge-group span {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.free-reg-pill {
+    background: var(--primary-red-light);
+    color: var(--primary-red);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.student-reg-form {
+    padding: 20px 18px;
+}
+
+.form-divider-label {
+    margin: 20px 0 12px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.form-divider-label span {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    letter-spacing: 0.5px;
+}
+
+.input-block {
+    margin-bottom: 18px;
+}
+
+.input-block label {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.req-star {
+    color: var(--primary-red);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-white);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.12);
+}
+
+.input-prefix-icon {
+    padding-left: 14px;
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 13px 14px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--dark-navy);
+    background: transparent;
+}
+
+.phone-wrapper .country-prefix {
+    padding: 0 14px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    background: var(--bg-page);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1.5px solid var(--border-color);
+}
+
+/* Gender Selection Pills */
+.gender-pill-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.form-row-2col {
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: 12px;
+}
+
+@media (max-width: 440px) {
+    .form-row-2col {
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 8px;
+    }
+}
+
+.gender-radio-item input {
+    display: none;
+}
+
+.gender-pill-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 8px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-page);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gender-radio-item input:checked + .gender-pill-btn {
+    border-color: var(--primary-red);
+    background: var(--primary-red-light);
+    color: var(--primary-red);
+    font-weight: 800;
+}
+
+/* Aadhaar Upload Dropzone */
+.upload-dropzone {
+    border: 2px dashed #B8C2CC;
+    border-radius: var(--radius-md);
+    padding: 18px;
+    background: #FAFAFC;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.upload-dropzone:active {
+    background: var(--primary-red-light);
+    border-color: var(--primary-red);
+}
+
+.upload-dropzone.has-file {
+    border-color: var(--success-green);
+    border-style: solid;
+    background: var(--success-bg);
+}
+
+.upload-idle-state {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+}
+
+.upload-icon-bubble {
+    width: 44px;
+    height: 44px;
+    background: var(--primary-red-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.upload-heading {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark-navy);
+}
+
+.upload-subtext {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.upload-ready-state {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-check-bubble {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.file-meta-info {
+    flex: 1;
+    text-align: left;
+}
+
+.file-name-text {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--success-green);
+    word-break: break-all;
+}
+
+.file-size-text {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.btn-clear-file {
+    padding: 6px 12px;
+    background: #FFF1F0;
+    color: var(--primary-red);
+    border: 1px solid rgba(183, 28, 28, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Agreement Block */
+.consent-block {
+    margin: 18px 0;
+}
+
+.consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.consent-label input {
+    display: none;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-white);
+    margin-top: 1px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.consent-label input:checked + .custom-checkbox {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.consent-label input:checked + .custom-checkbox::after {
+    content: '✓';
+    color: var(--bg-white);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.consent-text {
+    font-size: 12px;
+    color: var(--text-body);
+    line-height: 1.4;
+}
+
+/* Registration Submit Button */
+.btn-submit-registration {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-red);
+    color: var(--bg-white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(183, 28, 28, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-submit-registration:active {
+    background: var(--primary-red-hover);
+    transform: scale(0.98);
+}
+
+.btn-submit-registration:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.error-msg {
+    display: block;
+    color: var(--primary-red);
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* =========================================================
+   FAQ Section
+   ========================================================= */
+.faq-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.faq-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark-navy);
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.faq-arrow {
+    font-size: 16px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+}
+
+.faq-card.open .faq-arrow {
+    transform: rotate(180deg);
+    color: var(--primary-red);
+}
+
+.faq-drawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-card.open .faq-drawer {
+    max-height: 180px;
+}
+
+.faq-drawer p {
+    padding: 0 16px 14px;
+    font-size: 12px;
+    color: var(--text-body);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   Mobile Sticky Action Bar
+   ========================================================= */
+.mobile-sticky-action {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-white);
+    border-top: 1px solid var(--border-color);
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.sticky-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark-navy);
+}
+
+.sticky-text span {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.btn-sticky-register {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-red);
+    color: var(--bg-white);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(183, 28, 28, 0.3);
+}
+
+/* =========================================================
+   Confirmation Modal (Tour Pass Style)
+   ========================================================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.tour-pass-modal {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 360px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.pass-modal-header {
+    background: linear-gradient(135deg, #1B5E20, #2E7D32);
+    color: var(--bg-white);
+    padding: 22px 20px 18px;
+}
+
+.pass-modal-logo {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    margin-bottom: 8px;
+}
+
+.pass-status-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-white);
+    color: var(--success-green);
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.pass-modal-header h3 {
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.pass-sub {
+    font-size: 11px;
+    opacity: 0.9;
+}
+
+.pass-modal-body {
+    padding: 20px 18px;
+}
+
+.dept-pass-banner {
+    margin-bottom: 12px;
+}
+
+.dept-badge-pill {
+    display: inline-block;
+    background: var(--primary-red-light);
+    color: var(--primary-red);
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(183, 28, 28, 0.2);
+    letter-spacing: 0.3px;
+}
+
+.pass-route-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-red-light);
+    color: var(--primary-red);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+}
+
+.pass-confirmation-msg {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.5;
+}
+
+.pass-modal-actions {
+    padding: 0 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-whatsapp-share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25D366;
+    color: var(--bg-white);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.btn-modal-close {
+    background: var(--bg-page);
+    color: var(--dark-navy);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Confetti */
+.confetti-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    animation: confettiFall 2s ease-out forwards;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(350px) rotate(720deg); opacity: 0; }
+}
+
+/* Spinner */
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   Official Department & College Footer (Clean Bottom Bar)
+   ========================================================= */
+.app-footer {
+    background: var(--bg-white);
+    border-top: 1.5px solid var(--border-color);
+    padding: 30px 18px 22px;
+    margin-top: 24px;
+}
+
+.footer-inner {
+    text-align: center;
+}
+
+.footer-college-info h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark-navy);
+    letter-spacing: -0.2px;
+}
+
+.footer-college-sub {
+    font-size: 12px;
+    color: var(--text-body);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.footer-society-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.batch-tag-footer {
+    font-weight: 800 !important;
+    color: var(--primary-red) !important;
+    margin-top: 6px !important;
+    font-size: 12px !important;
+}
+
+.footer-bottom-line {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom-line p {
+    font-size: 11px;
+    color: var(--text-muted);
+}
